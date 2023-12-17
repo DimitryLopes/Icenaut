@@ -66,6 +66,8 @@ public class StateMachine : MonoBehaviour
                 Debug.LogError("MethodInfo for " + listener.GetType().ToString() + "not found!");
             }
         }
+
+
     }
 
 }

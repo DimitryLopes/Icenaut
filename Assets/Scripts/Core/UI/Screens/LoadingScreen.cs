@@ -37,7 +37,7 @@ public class LoadingScreen : MonoBehaviour
             {
                 isLoading = false;
                 currentOperation = null;
-                EventManager.OnLoadingFinished.Invoke();
+                EventManager.OnLoadingGameFinished.Invoke();
                 Hide();
             }
         }

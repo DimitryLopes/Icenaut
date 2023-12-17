@@ -7,9 +7,17 @@ public class Player : MonoBehaviour, IStateListener<OnGoingGameState>
     [SerializeField]
     private float movementSpeed = 5f;
     [SerializeField]
-    private float shootingDelay = 5f;
+    private float sprintingSpeedMultiplier = 1.3f;
     [SerializeField]
     private float jumpForce = 5f;
+    [SerializeField]
+    private float maxStamina = 5;
+    [SerializeField]
+    private float staminaConsumptionRate = 1f;
+    [SerializeField]
+    private float staminaRegenerationRate = 0.8f;
+    [SerializeField]
+    private float shootingDelay = 5f;
 
     [SerializeField]
     private int groundLayerID;
@@ -21,6 +29,8 @@ public class Player : MonoBehaviour, IStateListener<OnGoingGameState>
     [SerializeField, Header("Animation")]
     private AnimationInfo runAnimationInfo;
     [SerializeField]
+    private AnimationInfo sprintAnimationInfo;
+    [SerializeField]
     private AnimationInfo idleAnimationInfo;
     [SerializeField]
     private AnimationInfo jumpAnimationInfo;
@@ -28,12 +38,16 @@ public class Player : MonoBehaviour, IStateListener<OnGoingGameState>
     private AnimationInfo landedAnimationInfo;
 
     private AnimationManager animationManager;
+    private float currentStamina = 5;
     private bool isGrounded;
 
     public bool CanMove { get; private set; }
     public bool CanJump { get; private set; }
     public bool CanShoot { get; private set; }
     public bool CanAct { get; private set; }
+
+    public float CurrentStamina => currentStamina;
+    public float MaxStamina => maxStamina;
 
     private void Start()
     {
@@ -68,7 +82,7 @@ public class Player : MonoBehaviour, IStateListener<OnGoingGameState>
         float verticalInput = Input.GetAxis("Vertical");
 
         Vector3 moveDirection = new Vector3(horizontalInput, 0, verticalInput) * movementSpeed;
-
+        moveDirection = HandleSprinting(moveDirection);
         if (horizontalInput != 0 || verticalInput != 0)
         {
             transform.rotation = Quaternion.LookRotation(moveDirection);
@@ -83,6 +97,27 @@ public class Player : MonoBehaviour, IStateListener<OnGoingGameState>
 
         moveDirection.y = rigidbody.velocity.y;
         rigidbody.velocity = moveDirection;
+    }
+
+    private Vector3 HandleSprinting(Vector3 movementDirection)
+    {
+        if (Input.GetKey(KeyCode.LeftShift) && currentStamina > 0)
+        {
+            movementDirection *= sprintingSpeedMultiplier;
+
+            animationManager.PlayerAnimationController.Animate(sprintAnimationInfo);
+            currentStamina -= Time.deltaTime * staminaConsumptionRate;
+        }
+        else
+        {
+            animationManager.PlayerAnimationController.Animate(sprintAnimationInfo, false);
+            if (currentStamina < maxStamina)
+            {
+                currentStamina += Time.deltaTime * staminaRegenerationRate;
+            }
+        }
+
+        return movementDirection;
     }
 
     private void HandleJump()

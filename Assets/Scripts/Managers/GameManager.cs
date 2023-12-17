@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
     private CinemachineVirtualCamera mainCamera;
     private LevelManager levelManager;
 
+    public Player CurrentPlayer => currentPlayer;
+
     private void Awake()
     {
         if (Instance == null)
@@ -39,7 +41,6 @@ public class GameManager : MonoBehaviour
     public void OnMainGameLoaded()
     {
         levelManager.GetLevelInfo();
-        stateMachine.ChangeState(GameStates.OnGoing);
 
         currentPlayer = Instantiate(playerPrefab);
         AnimationManager.Instance.PlayerAnimationController = currentPlayer.GetComponent<AnimationController>();
@@ -49,6 +50,8 @@ public class GameManager : MonoBehaviour
         mainCamera = levelManager.LevelCamera;
         mainCamera.Follow = currentPlayer.transform;
         mainCamera.LookAt = currentPlayer.transform;
+
+        stateMachine.ChangeState(GameStates.OnGoing);
     }
 
     public void LoadMainMenu()

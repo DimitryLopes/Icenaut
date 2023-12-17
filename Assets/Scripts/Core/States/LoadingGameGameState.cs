@@ -8,12 +8,12 @@ public class LoadingGameGameState : GameState
         base.OnStateActivated(state);
         AsyncOperation operation = SceneManagementUtils.LoadLevel1();
         UIManager.Instance.ShowLoadingScreen(operation);
-        EventManager.OnLoadingFinished.AddListener(OnLoadingFinished);
+        EventManager.OnLoadingGameFinished.AddListener(OnLoadingFinished);
     }
 
     private void OnLoadingFinished()
     {
-        EventManager.OnLoadingFinished.RemoveListener(OnLoadingFinished);
+        EventManager.OnLoadingGameFinished.RemoveListener(OnLoadingFinished);
         GameManager.Instance.OnMainGameLoaded();
     }
 }
