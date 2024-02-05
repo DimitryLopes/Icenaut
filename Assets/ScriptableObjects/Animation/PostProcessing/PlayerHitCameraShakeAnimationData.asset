@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af65d60648b811e4a8138633cd290cf7, type: 3}
   m_Name: PlayerHitCameraShakeAnimationData
   m_EditorClassIdentifier: 
-  animationDuration: 2
+  animationDuration: 0.3
   priority: 1
   hideOnFinish: 1
   amplitude: 2
