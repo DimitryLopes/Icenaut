@@ -1,5 +1,6 @@
 using UnityEngine;
 using Cinemachine;
+using System.Collections;
 
 public class GameManager : MonoBehaviour
 {
@@ -9,12 +10,15 @@ public class GameManager : MonoBehaviour
     private Player playerPrefab;
     [SerializeField]
     private StateMachine stateMachine;
+    [SerializeField]
+    private float playerRespawnTimer;
 
     private Player currentPlayer;
     private CinemachineVirtualCamera mainCamera;
     private LevelManager levelManager;
 
     public Player CurrentPlayer => currentPlayer;
+    public CinemachineVirtualCamera MainCamera => mainCamera;
 
     private void Awake()
     {
@@ -26,11 +30,11 @@ public class GameManager : MonoBehaviour
         Destroy(gameObject);
     }
 
-
     void Start()
     {
         stateMachine.ChangeState(GameStates.MainMenu);
         levelManager = LevelManager.Instance;
+        EventManager.OnPlayerDeath.AddListener(StartPlayerRespawn);
     }
 
     public void OnMainMenuLoaded()
@@ -62,5 +66,25 @@ public class GameManager : MonoBehaviour
     public void LoadLevel1()
     {
         stateMachine.ChangeState(GameStates.LoadingGame);
+    }
+
+    private void StartPlayerRespawn(Player player)
+    {
+        stateMachine.ChangeState(GameStates.Finished);
+        StartCoroutine(PlayerRespawn());
+    }
+
+    private IEnumerator PlayerRespawn()
+    {
+        float timer = 0;
+        while(timer < playerRespawnTimer)
+        {
+            timer += Time.deltaTime;
+            yield return null;
+        }
+        stateMachine.ChangeState(GameStates.OnGoing);
+        currentPlayer.Respawn();
+        UIManager.Instance.ShowPlayerUI();
+        currentPlayer.transform.position = levelManager.CurrentLevelPlayerSpawnPoint.position;
     }
 }

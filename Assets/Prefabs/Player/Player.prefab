@@ -480,7 +480,7 @@ GameObject:
   - component: {fileID: 7773904333927659279}
   m_Layer: 6
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -562,16 +562,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60a4fbff7815a87498265d0f69cd7091, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 3
   rigidbody: {fileID: 7773904333927659273}
   movementSpeed: 9
   sprintingSpeedMultiplier: 1.3
-  jumpForce: 14
+  jumpForce: 21
   maxStamina: 5
   staminaConsumptionRate: 1
   staminaRegenerationRate: 0.8
   shootingDelay: 5
   groundLayerID: 7
-  groundCheckDistance: 0.2
+  groundCheckDistance: 0.3
   whatIsGround:
     serializedVersion: 2
     m_Bits: 8
@@ -590,6 +591,9 @@ MonoBehaviour:
   landedAnimationInfo:
     animationKey: IsGrounded
     animationType: 0
+  dieAnimationInfo:
+    animationKey: Death
+    animationType: 1
 --- !u!114 &7773904333927659279
 MonoBehaviour:
   m_ObjectHideFlags: 0

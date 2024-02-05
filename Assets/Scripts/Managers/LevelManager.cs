@@ -7,7 +7,10 @@ public class LevelManager : MonoBehaviour
 
     public static LevelManager Instance;
     public Transform CurrentLevelPlayerSpawnPoint => currentLevelInfo.PlayerSpawnPoint;
+    public LevelInfo CurrentLevelInfo => currentLevelInfo;
     public CinemachineVirtualCamera LevelCamera => currentLevelInfo.LevelCamera;
+
+    public Checkpoint CurrentCheckpoint { get; set; }
 
     private void Awake()
     {
@@ -22,5 +25,11 @@ public class LevelManager : MonoBehaviour
     public void GetLevelInfo()
     {
         currentLevelInfo = FindObjectOfType<LevelInfo>();
+    }
+
+    public void ChangePlayerSpawnPoint(Checkpoint checkpoint)
+    {
+        currentLevelInfo.ChangePlayerSpawnPoint(checkpoint.PlayerSpawnPoint);
+        CurrentCheckpoint = checkpoint;
     }
 }
