@@ -55,6 +55,7 @@ public class Player : LivingEntity, IStateListener<OnGoingGameState>
     public bool CanMove { get; private set; }
     public bool CanJump { get; private set; }
     public bool CanShoot { get; private set; }
+    public bool CanUseItems { get; private set; }
     public bool CanAct { get; private set; }
 
     public float CurrentStamina => currentStamina;
@@ -84,6 +85,10 @@ public class Player : LivingEntity, IStateListener<OnGoingGameState>
             if (CanShoot)
             {
                 HandleShooting();
+            }
+            if (CanUseItems)
+            {
+                HandleItemUsage();
             }
         }
     }
@@ -120,6 +125,25 @@ public class Player : LivingEntity, IStateListener<OnGoingGameState>
 
         moveDirection.y = rigidbody.velocity.y;
         rigidbody.velocity = moveDirection;
+    }
+
+    private void HandleItemUsage()
+    {
+        if (health < maxHealth)
+        {
+            if (ItemManager.Instance.GetItemAmount(ItemType.HealthPack) > 0)
+            {
+                UIManager.Instance.ShowUITooltip("You have a HealthPack, Press F to heal!");
+                
+                if (Input.GetKeyDown(KeyCode.F))
+                {
+                    OnHealthRecovered(maxHealth);
+                    UIManager.Instance.UpdatePlayerBar(UIManager.UIPlayerBarType.Health, health, maxHealth);
+                    ItemManager.Instance.ChangeItemAmount(ItemType.HealthPack, -1);
+                    UIManager.Instance.HideUITooltip();
+                }
+            }
+        }
     }
 
     private Vector3 HandleSprinting(Vector3 movementDirection)
@@ -199,6 +223,7 @@ public class Player : LivingEntity, IStateListener<OnGoingGameState>
             ToggleMoving(value);
             ToggleJumpping(value);
             ToggleShooting(value);
+            ToggleItemUsage(value);
         }
     }
     public void ToggleMoving(bool value)
@@ -212,6 +237,10 @@ public class Player : LivingEntity, IStateListener<OnGoingGameState>
     public void ToggleShooting(bool value)
     {
         CanShoot = value;
+    }
+    public void ToggleItemUsage(bool value)
+    {
+        CanUseItems = value;
     }
     #endregion
 

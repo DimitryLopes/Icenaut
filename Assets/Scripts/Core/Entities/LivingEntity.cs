@@ -24,6 +24,15 @@ public abstract class LivingEntity : Entity
         }
     }
 
+    public virtual void OnHealthRecovered(float recovery)
+    {
+        health += recovery;
+        if(health > maxHealth)
+        {
+            health = maxHealth;
+        }
+    }
+
     public abstract void Die();
 
     public virtual void Respawn()

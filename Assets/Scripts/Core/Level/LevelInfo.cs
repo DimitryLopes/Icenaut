@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 using Cinemachine;
 public class LevelInfo : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class LevelInfo : MonoBehaviour
     private Transform playerSpawnPoint;
     [SerializeField]
     private Transform bulletContainer;
+    [SerializeField]
+    private List<ItemSpawner> itemSpawners;
 
     public Transform PlayerSpawnPoint => playerSpawnPoint;
     public Transform BulletContainer => bulletContainer;
@@ -16,5 +19,13 @@ public class LevelInfo : MonoBehaviour
     public void ChangePlayerSpawnPoint(Transform spawnPoint)
     {
         playerSpawnPoint = spawnPoint;
+    }
+
+    public void Load()
+    {
+        foreach(ItemSpawner spawner in itemSpawners)
+        {
+            spawner.Load();
+        }
     }
 }

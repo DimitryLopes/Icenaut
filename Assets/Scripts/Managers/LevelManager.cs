@@ -25,6 +25,7 @@ public class LevelManager : MonoBehaviour
     public void GetLevelInfo()
     {
         currentLevelInfo = FindObjectOfType<LevelInfo>();
+        currentLevelInfo.Load();
     }
 
     public void ChangePlayerSpawnPoint(Checkpoint checkpoint)

@@ -18,6 +18,10 @@ public class EventManager : MonoBehaviour
     //enemies
     public static UnityEvent<EnemyBase> OnEnemyDeath = new UnityEvent<EnemyBase>();
 
+    //Items
+    public static UnityEvent<Item> OnItemActivated = new UnityEvent<Item>();
+    public static UnityEvent<Item> OnItemDeactivated = new UnityEvent<Item>();
+    public static UnityEvent<ItemType, int> OnItemAmountChanged = new UnityEvent<ItemType, int>();
     //Player
     public static UnityEvent<Player> OnPlayerDeath = new UnityEvent<Player>();
     public static UnityEvent<Player> OnPlayerHit = new UnityEvent<Player>();
