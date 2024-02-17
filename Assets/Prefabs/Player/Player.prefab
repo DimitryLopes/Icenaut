@@ -594,6 +594,7 @@ MonoBehaviour:
   dieAnimationInfo:
     animationKey: Death
     animationType: 1
+  meshRenderer: {fileID: 2150332391425020350}
 --- !u!114 &7773904333927659279
 MonoBehaviour:
   m_ObjectHideFlags: 0

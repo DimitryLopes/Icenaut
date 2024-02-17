@@ -1,9 +1,12 @@
 using UnityEngine;
+using System.Collections;
+
 
 public class Player : LivingEntity, IStateListener<OnGoingGameState>
 {
     private const string HORIZONTAL_AXIS_KEY = "Horizontal";
     private const string VERTICAL_AXIS_KEY = "Vertical";
+    private const string SHADER_ID_NAME = "_EmissionMap";
 
     [SerializeField]
     private Rigidbody rigidbody;
@@ -21,8 +24,6 @@ public class Player : LivingEntity, IStateListener<OnGoingGameState>
     private float staminaRegenerationRate = 0.8f;
     [SerializeField]
     private float shootingDelay = 5f;
-    [SerializeField]
-    private Collider collider;
 
 
     [SerializeField, Header("ground check")]
@@ -45,6 +46,9 @@ public class Player : LivingEntity, IStateListener<OnGoingGameState>
     [SerializeField]
     private AnimationInfo dieAnimationInfo;
 
+    [SerializeField, Header("Clothing")]
+    private SkinnedMeshRenderer meshRenderer;
+    
     private AnimationManager animationManager;
     private float currentStamina = 5;
     private bool isGrounded;
@@ -243,6 +247,32 @@ public class Player : LivingEntity, IStateListener<OnGoingGameState>
         CanUseItems = value;
     }
     #endregion
+
+    #region Status
+    public void ApplyStatusChange(float movementSpeed, float jumpForce, float duration, Texture2D clothTexture)
+    {
+        StartCoroutine(PowerUpStatusChanged(movementSpeed, jumpForce, duration, clothTexture));
+    }
+
+    private IEnumerator PowerUpStatusChanged(float movementSpeed, float jumpForce, float duration, Texture2D clothTexture)
+    {
+        Texture previousTexture = meshRenderer.materials[0].GetTexture(SHADER_ID_NAME);
+        meshRenderer.materials[0].SetTexture(SHADER_ID_NAME, clothTexture);
+        float timer = 0;
+        this.movementSpeed += movementSpeed;
+        this.jumpForce += jumpForce;
+        while(timer < duration)
+        {
+            timer += Time.deltaTime;
+            yield return null;
+        }
+        this.movementSpeed -= movementSpeed;
+        this.jumpForce -= jumpForce;
+        meshRenderer.materials[0].SetTexture(SHADER_ID_NAME, previousTexture);
+    }
+    #endregion
+
+
 
     private void ChangeWeapon()
     {

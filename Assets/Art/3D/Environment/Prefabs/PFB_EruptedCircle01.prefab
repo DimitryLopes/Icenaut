@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4543900910658678536}
   - component: {fileID: -3609652129897346176}
   m_Layer: 0
-  m_Name: PFB_EruptedCircle03
+  m_Name: PFB_EruptedCircle01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

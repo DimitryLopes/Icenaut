@@ -5,6 +5,8 @@ using UnityEngine;
 public class ItemManager : MonoBehaviour
 {
     [SerializeField]
+    private DroppedItem droppedItemPrefab;
+    [SerializeField]
     private Transform itemsContainer;
     [SerializeField]
     private List<ItemData> itemDataBase;
@@ -13,6 +15,8 @@ public class ItemManager : MonoBehaviour
 
     public Dictionary<ItemType, ItemSavedData> ItemSavedData = new Dictionary<ItemType, ItemSavedData>();
     public Dictionary<ItemType, List<Item>> InstantiatedItems = new Dictionary<ItemType, List<Item>>();
+    private List<DroppedItem> InstantiatedDroppedItems = new List<DroppedItem>();
+
     [HideInInspector]
     public List<ItemData> ItemDataBase => itemDataBase;
 
@@ -104,6 +108,22 @@ public class ItemManager : MonoBehaviour
         Item newItem = Instantiate(GetItemPrefab(type), itemsContainer);
         newItem.Activate();
 
+        return newItem;
+    }
+
+    public DroppedItem GetAvailableDroppedItem()
+    {
+        foreach(DroppedItem item in InstantiatedDroppedItems)
+        {
+            if (!item.IsActive)
+            {
+                item.Activate();
+                return item;
+            }
+        }
+
+        DroppedItem newItem = Instantiate(droppedItemPrefab, itemsContainer);
+        newItem.Activate();
         return newItem;
     }
     #endregion

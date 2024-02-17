@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac0c81958850e14458c8fc75091f631d, type: 3}
+  m_Name: DroppedCoinData
+  m_EditorClassIdentifier: 
+  itemSprite: {fileID: 21300000, guid: 86274537c23dd3849be966b6e9e7f21c, type: 3}
+  itemType: 0
+  itemPrefab: {fileID: 9168212016907972800, guid: 759c3c430e0d46643ba6f208a3a9bd7b, type: 3}
+  duration: 10
+  explosionForce: 3
+  itemRewardType: 0
