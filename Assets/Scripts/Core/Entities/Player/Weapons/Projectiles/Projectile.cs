@@ -10,6 +10,8 @@ public class Projectile : MonoBehaviour
     private float speed;
     [SerializeField]
     private float lifeSpan;
+    [SerializeField]
+    protected VFXBurstComponent burstParticles;
 
     private float damage;
     private float timer;
@@ -37,6 +39,9 @@ public class Projectile : MonoBehaviour
     {
         if (collider.gameObject.tag == targetTag)
         {
+            burstParticles.transform.SetParent(LevelManager.Instance.CurrentLevelInfo.ParticlesContainer);
+            burstParticles.transform.position = transform.position;
+            burstParticles.Burst();
             Entity entity = collider.gameObject.GetComponent<Entity>();
             entity.OnDamageTaken(damage);
         }

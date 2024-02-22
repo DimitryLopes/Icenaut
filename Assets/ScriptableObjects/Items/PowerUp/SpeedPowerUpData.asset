@@ -16,3 +16,4 @@ MonoBehaviour:
   jumpForce: 0
   duration: 30
   clothTexture: {fileID: 2800000, guid: 227906252549b4a4b85b8118bf462d62, type: 3}
+  id: 2

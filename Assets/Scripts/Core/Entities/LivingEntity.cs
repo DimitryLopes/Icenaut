@@ -10,7 +10,6 @@ public abstract class LivingEntity : Entity
 
     public virtual void Start()
     {
-        health = maxHealth;
         Respawn();
     }
 

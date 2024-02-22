@@ -45,8 +45,10 @@ public class GameManager : MonoBehaviour
     public void OnMainGameLoaded()
     {
         levelManager.GetLevelInfo();
-
         currentPlayer = Instantiate(playerPrefab);
+
+        HandleSave();
+
         AnimationManager.Instance.PlayerAnimationController = currentPlayer.GetComponent<AnimationController>();
         currentPlayer.transform.position = levelManager.CurrentLevelPlayerSpawnPoint.position;
         currentPlayer.EnableActing();
@@ -56,6 +58,22 @@ public class GameManager : MonoBehaviour
         mainCamera.LookAt = currentPlayer.transform;
 
         stateMachine.ChangeState(GameStates.OnGoing);
+    }
+
+    private void HandleSave()
+    {
+        SavedData savedData = SaveManager.Instance.LoadSave();
+        if (savedData != null)
+        {
+            if (savedData.checkPointId != 0)
+            {
+                levelManager.ChangePlayerSpawnPointByCheckpointID(savedData.checkPointId);
+            }
+            PowerUpManager.Instance.CreatePowerUpData(savedData.remainingBuffDuration, savedData.activeBuffId);
+            ItemManager.Instance.ChangeItemAmount(ItemType.Coin, savedData.coins);
+            ItemManager.Instance.ChangeItemAmount(ItemType.HealthPack, savedData.healthPacks);
+            currentPlayer.SpawnPlayer(savedData.playerHealth);
+        }
     }
 
     public void LoadMainMenu()

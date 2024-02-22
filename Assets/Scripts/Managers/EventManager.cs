@@ -23,6 +23,7 @@ public class EventManager : MonoBehaviour
     public static UnityEvent<Item> OnItemDeactivated = new UnityEvent<Item>();
     public static UnityEvent<ItemType, int> OnItemAmountChanged = new UnityEvent<ItemType, int>();
     public static UnityEvent<PowerUp> OnPowerUpAcquired = new UnityEvent<PowerUp>();
+    public static UnityEvent<PowerUpData> OnPowerUpExpired = new UnityEvent<PowerUpData>();
 
     //Player
     public static UnityEvent<Player> OnPlayerDeath = new UnityEvent<Player>();

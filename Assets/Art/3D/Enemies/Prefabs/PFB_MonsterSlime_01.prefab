@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1901434784806249611}
   - component: {fileID: 9186062797965940766}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Mouth_closed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6828571323435025585}
   - component: {fileID: 1360318468707340633}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: R_Eye_Closed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -161,7 +161,7 @@ SpriteRenderer:
   m_Size: {x: 0.92, y: 0.49}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1620053543330670299
@@ -174,7 +174,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7858624749456988827}
   - component: {fileID: 7817047426897242333}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SPR_Enemy_Eyebrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -256,7 +256,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1961384439081467237}
   - component: {fileID: 1080136963077318744}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SPR_Enemy_Eyebrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -338,7 +338,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5474359746798868145}
   - component: {fileID: 2067266595346170544}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: L_Eye_Open
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -407,7 +407,7 @@ SpriteRenderer:
   m_Size: {x: 0.42, y: 0.82}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &3625850865936721329
@@ -420,7 +420,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7974575585368415426}
   - component: {fileID: 6227648448208856277}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: R_Eye_Open
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -489,7 +489,7 @@ SpriteRenderer:
   m_Size: {x: 0.47, y: 0.81}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &4095235320687960228
@@ -501,7 +501,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1664474020148757943}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: R_Eyebrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -532,7 +532,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5347905353878958888}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Face
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -567,7 +567,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 237881610287301113}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: R_Eye
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -599,7 +599,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5265316123925844557}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: L_Eyebrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -630,7 +630,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3073097398747625283}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Mouth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -663,7 +663,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1953783135381418045}
   - component: {fileID: 3861860636775357724}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Mouth_Open
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -745,7 +745,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4312166487612725018}
   - component: {fileID: 5871265226340830468}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: L_Eye_Closed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -814,7 +814,7 @@ SpriteRenderer:
   m_Size: {x: 0.59, y: 0.62}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &8739983342510089396
@@ -826,7 +826,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 856533039701465585}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: L_Eye
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -861,9 +861,13 @@ GameObject:
   - component: {fileID: 5120272776034143064}
   - component: {fileID: 6983442274928476050}
   - component: {fileID: 7443898874300591051}
-  m_Layer: 0
+  - component: {fileID: 460831295}
+  - component: {fileID: 460831292}
+  - component: {fileID: 460831293}
+  - component: {fileID: 460831294}
+  m_Layer: 7
   m_Name: PFB_MonsterSlime_01
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -951,3 +955,72 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!64 &460831295
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8929186499503660615}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 2207997379387373106, guid: bb8855b1af386954d80701a8a937c2dc, type: 3}
+--- !u!114 &460831292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8929186499503660615}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c53db0b46d6b7c343ba2ee915e433814, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 5
+  animationController: {fileID: 460831293}
+  deathAnimationInfo:
+    animationKey: Death
+    animationType: 1
+  movementAI: {fileID: 460831294}
+--- !u!114 &460831293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8929186499503660615}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ac479fbf1d25f644aec7cc53a673a2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 7443898874300591051}
+--- !u!114 &460831294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8929186499503660615}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02d52c98806aadc47b78a244e0105fa5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animationController: {fileID: 460831293}
+  movementSpeed: 5
+  idleAnimationInfo:
+    animationKey: Idle
+    animationType: 0
+  movingAnimationInfo:
+    animationKey: Walking
+    animationType: 0
+  maxMovementCooldown: 7
+  positions:
+  - {fileID: 0}
+  - {fileID: 0}

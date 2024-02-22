@@ -4,11 +4,14 @@ public class Checkpoint : MonoBehaviour
 {
     [SerializeField]
     private Transform playerSpawnPoint;
+    [SerializeField]
+    private int id;
 
     public Transform PlayerSpawnPoint => playerSpawnPoint;
 
+    public int ID => id;
     private bool isInRange;
-    private bool IsActive => LevelManager.Instance.CurrentCheckpoint == this;
+    private bool IsActive => LevelManager.Instance.CurrentCheckpointID == id;
     public void ActivateCheckpoint()
     {
         LevelManager.Instance.ChangePlayerSpawnPoint(this);
@@ -24,6 +27,7 @@ public class Checkpoint : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.E))
                 {
                     ActivateCheckpoint();
+                    SaveManager.Instance.SaveGame();
                 }
             }
         }

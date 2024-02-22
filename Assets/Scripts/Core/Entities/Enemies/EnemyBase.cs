@@ -18,6 +18,11 @@ public class EnemyBase : LivingEntity
         isAlive = false;
     }
 
+    public override void OnDamageTaken(float damage)
+    {
+        base.OnDamageTaken(damage);
+    }
+
     public virtual void Update()
     {
         if (isAlive)

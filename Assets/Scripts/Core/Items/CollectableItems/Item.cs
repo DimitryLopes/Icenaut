@@ -4,6 +4,8 @@ public class Item : MonoBehaviour, IActivatable
 {
     [SerializeField]
     protected ItemData itemData;
+    [SerializeField]
+    private VFXBurstComponent particles;
 
     public ItemData Data => itemData;
 
@@ -28,6 +30,8 @@ public class Item : MonoBehaviour, IActivatable
     public virtual void OnPickUp()
     {
         Debug.Log("Got item: " + gameObject.name);
+        particles.transform.SetParent(LevelManager.Instance.CurrentLevelInfo.ParticlesContainer);
+        particles.Burst();
         ItemManager.Instance.ChangeItemAmount(Data.Type, 1);
         Deactivate();
     }

@@ -10,7 +10,7 @@ public class LevelManager : MonoBehaviour
     public LevelInfo CurrentLevelInfo => currentLevelInfo;
     public CinemachineVirtualCamera LevelCamera => currentLevelInfo.LevelCamera;
 
-    public Checkpoint CurrentCheckpoint { get; set; }
+    public int CurrentCheckpointID { get; set; } = 0;
 
     private void Awake()
     {
@@ -28,9 +28,14 @@ public class LevelManager : MonoBehaviour
         currentLevelInfo.Load();
     }
 
+    public void ChangePlayerSpawnPointByCheckpointID(int id)
+    {
+        currentLevelInfo.ChangePlayerSpawnPointByCheckpointID(id);
+    }
+
     public void ChangePlayerSpawnPoint(Checkpoint checkpoint)
     {
         currentLevelInfo.ChangePlayerSpawnPoint(checkpoint.PlayerSpawnPoint);
-        CurrentCheckpoint = checkpoint;
+        CurrentCheckpointID = checkpoint.ID;
     }
 }

@@ -6,7 +6,6 @@ public class Player : LivingEntity, IStateListener<OnGoingGameState>
 {
     private const string HORIZONTAL_AXIS_KEY = "Horizontal";
     private const string VERTICAL_AXIS_KEY = "Vertical";
-    private const string SHADER_ID_NAME = "_EmissionMap";
 
     [SerializeField]
     private Rigidbody rigidbody;
@@ -56,6 +55,8 @@ public class Player : LivingEntity, IStateListener<OnGoingGameState>
     private BaseGun currentWeapon;
     private BaseGun sideWeapon;
 
+    public SkinnedMeshRenderer MeshRenderer => meshRenderer;
+
     public bool CanMove { get; private set; }
     public bool CanJump { get; private set; }
     public bool CanShoot { get; private set; }
@@ -64,11 +65,26 @@ public class Player : LivingEntity, IStateListener<OnGoingGameState>
 
     public float CurrentStamina => currentStamina;
     public float MaxStamina => maxStamina;
+    public float CurrentHealth => health;
 
     public override void Start()
     {
-        base.Start();
         animationManager = AnimationManager.Instance;
+    }
+
+    public void SpawnPlayer(float health = 0)
+    {
+        isAlive = true;
+        if(health != 0)
+        {
+            this.health = health;
+            OnSpawn();
+        }
+        else
+        {
+            Respawn();
+        }
+
     }
 
     #region Gameplay
@@ -249,26 +265,24 @@ public class Player : LivingEntity, IStateListener<OnGoingGameState>
     #endregion
 
     #region Status
-    public void ApplyStatusChange(float movementSpeed, float jumpForce, float duration, Texture2D clothTexture)
+    public void ApplyPowerUp(PowerUpData powerUp)
     {
-        StartCoroutine(PowerUpStatusChanged(movementSpeed, jumpForce, duration, clothTexture));
+        StartCoroutine(PowerUpStatusChanged(powerUp));
     }
 
-    private IEnumerator PowerUpStatusChanged(float movementSpeed, float jumpForce, float duration, Texture2D clothTexture)
+    private IEnumerator PowerUpStatusChanged(PowerUpData powerUp)
     {
-        Texture previousTexture = meshRenderer.materials[0].GetTexture(SHADER_ID_NAME);
-        meshRenderer.materials[0].SetTexture(SHADER_ID_NAME, clothTexture);
         float timer = 0;
-        this.movementSpeed += movementSpeed;
-        this.jumpForce += jumpForce;
-        while(timer < duration)
+        this.movementSpeed += powerUp.Speed;
+        this.jumpForce += powerUp.JumpForce;
+        while(timer < powerUp.Duration)
         {
             timer += Time.deltaTime;
             yield return null;
         }
-        this.movementSpeed -= movementSpeed;
-        this.jumpForce -= jumpForce;
-        meshRenderer.materials[0].SetTexture(SHADER_ID_NAME, previousTexture);
+        EventManager.OnPowerUpExpired.Invoke(powerUp);
+        this.movementSpeed -= powerUp.Speed;
+        this.jumpForce -= powerUp.JumpForce;
     }
     #endregion
 
@@ -313,6 +327,11 @@ public class Player : LivingEntity, IStateListener<OnGoingGameState>
     public override void Respawn()
     {
         base.Respawn();
+        OnSpawn();
+    }
+
+    private void OnSpawn()
+    {
         EnableActing();
         UIManager.Instance.UpdatePlayerBar(UIManager.UIPlayerBarType.Health, health, maxHealth);
         if (animationManager != null)
