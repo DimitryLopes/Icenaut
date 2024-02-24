@@ -32,6 +32,7 @@ public class Item : MonoBehaviour, IActivatable
         Debug.Log("Got item: " + gameObject.name);
         particles.transform.SetParent(LevelManager.Instance.CurrentLevelInfo.ParticlesContainer);
         particles.Burst();
+        AudioManager.Instance.PlaySFX(transform.position, Data.SFX);
         ItemManager.Instance.ChangeItemAmount(Data.Type, 1);
         Deactivate();
     }

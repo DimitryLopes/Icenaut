@@ -51,6 +51,7 @@ public class Player : LivingEntity, IStateListener<OnGoingGameState>
     private AnimationManager animationManager;
     private float currentStamina = 5;
     private bool isGrounded;
+    private bool isInvincible = false;
 
     private BaseGun currentWeapon;
     private BaseGun sideWeapon;
@@ -306,12 +307,26 @@ public class Player : LivingEntity, IStateListener<OnGoingGameState>
 
     public override void OnDamageTaken(float damage)
     {
-        if (isAlive)
+        if (isAlive && !isInvincible)
         {
+            StartCoroutine(StartInvincibility());
             base.OnDamageTaken(damage);
             EventManager.OnPlayerHit.Invoke(this);
             UIManager.Instance.UpdatePlayerBar(UIManager.UIPlayerBarType.Health, health, maxHealth);
         }
+    }
+
+    private IEnumerator StartInvincibility()
+    {
+        float timer = 0;
+        isInvincible = true;
+
+        while(timer < 1f)
+        {
+            timer += Time.deltaTime;
+            yield return null;
+        }
+        isInvincible = false;
     }
 
     public override void Die()

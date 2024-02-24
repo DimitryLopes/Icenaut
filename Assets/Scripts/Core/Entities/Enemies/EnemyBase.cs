@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 
 public class EnemyBase : LivingEntity
@@ -9,6 +8,8 @@ public class EnemyBase : LivingEntity
     private AnimationInfo deathAnimationInfo;
     [SerializeField]
     private EnemyMovementAI movementAI;
+    [SerializeField]
+    private float contactDamage;
 
     public override void Die()
     {
@@ -28,6 +29,15 @@ public class EnemyBase : LivingEntity
         if (isAlive)
         {
             movementAI.HandleMovement();
+        }
+    }
+
+    public void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == "Player")
+        {
+            Player player = collision.gameObject.GetComponent<Player>();
+            player.OnDamageTaken(contactDamage);
         }
     }
 }

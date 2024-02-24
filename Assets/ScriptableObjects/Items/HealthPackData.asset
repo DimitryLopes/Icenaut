@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c46e594607cd23749a5a60eb302fa225, type: 3}
   m_Name: HealthPackData
   m_EditorClassIdentifier: 
+  sfx: {fileID: 8300000, guid: 4b75957d7badad64e9d743da909eb294, type: 3}
   itemSprite: {fileID: 21300000, guid: 582fda2b246e8d04db2489839ac1e3ca, type: 3}
   itemType: 1
   itemPrefab: {fileID: 8159891371068994347, guid: 746f2381810b04341acd7b1044c107f1, type: 3}

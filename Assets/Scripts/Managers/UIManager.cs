@@ -17,6 +17,10 @@ public class UIManager : MonoBehaviour
     private UIPlayerBar playerBarPrefab;
     [SerializeField]
     private Transform UIPlayerBarsContainer;
+    [SerializeField]
+    private UIPauseScreen pauseScreen;
+    [SerializeField]
+    private UIGameFinishScreen victoryScreen;
 
     public static UIManager Instance;
 
@@ -77,6 +81,16 @@ public class UIManager : MonoBehaviour
     public void HideUITooltip()
     {
         tooltip.Hide();
+    }
+
+    public void ShowPauseScreen()
+    {
+        pauseScreen.Show();
+    }
+    
+    public void ShowVictoryScreen()
+    {
+        victoryScreen.Show();
     }
 
     public void UpdatePlayerBar(UIPlayerBarType type, float currentValue, float maxValue)

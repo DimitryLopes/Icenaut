@@ -13,6 +13,7 @@ public class PowerUp : MonoBehaviour
     {
         if(other.gameObject.tag == "Player")
         {
+            AudioManager.Instance.PlaySFX(transform.position, Data.SFX);
             particles.transform.SetParent(LevelManager.Instance.CurrentLevelInfo.ParticlesContainer);
             particles.Burst();
             EventManager.OnPowerUpAcquired.Invoke(this);

@@ -2,7 +2,7 @@ using UnityEditor;
 using UnityEngine;
 
 //[CustomEditor(typeof(MultiStateItemData))]
-public class ItemStateInspector : Editor
+/*public class ItemStateInspector : Editor
 {
     private bool[] itemFoldouts;
     public override void OnInspectorGUI()
@@ -49,4 +49,4 @@ public class ItemStateInspector : Editor
 
         base.OnInspectorGUI();
     }
-}
+}*/

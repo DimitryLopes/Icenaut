@@ -987,6 +987,7 @@ MonoBehaviour:
     animationKey: Death
     animationType: 1
   movementAI: {fileID: 460831294}
+  contactDamage: 1
 --- !u!114 &460831293
 MonoBehaviour:
   m_ObjectHideFlags: 0

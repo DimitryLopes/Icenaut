@@ -32,7 +32,7 @@ public class BaseGun : MonoBehaviour
         {
             onCooldown = true;
             StartCoroutine(ShootCooldown());
-
+            AudioManager.Instance.PlaySFX(transform.position, stats.SFX);
             currentAmmo--;
             if (currentAmmo <= 0)
             {

@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
     private StateMachine stateMachine;
     [SerializeField]
     private float playerRespawnTimer;
+    [SerializeField]
+    private AudioClip bgmClip;
 
     private Player currentPlayer;
     private CinemachineVirtualCamera mainCamera;
@@ -58,6 +60,7 @@ public class GameManager : MonoBehaviour
         mainCamera.LookAt = currentPlayer.transform;
 
         stateMachine.ChangeState(GameStates.OnGoing);
+        AudioManager.Instance.PlayMusic(bgmClip);
     }
 
     private void HandleSave()

@@ -4,6 +4,8 @@ using UnityEngine;
 public class ItemData : ScriptableObject
 {
     [SerializeField]
+    private AudioClip sfx;
+    [SerializeField]
     private Sprite itemSprite;
     [SerializeField]
     private ItemType itemType;
@@ -13,6 +15,7 @@ public class ItemData : ScriptableObject
     public ItemType Type => itemType;
     public Item Prefab => itemPrefab;
     public Sprite Icon => itemSprite;
+    public AudioClip SFX => sfx;
 }
 
 public enum ItemType

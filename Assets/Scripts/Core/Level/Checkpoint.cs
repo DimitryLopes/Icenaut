@@ -5,6 +5,8 @@ public class Checkpoint : MonoBehaviour
     [SerializeField]
     private Transform playerSpawnPoint;
     [SerializeField]
+    private AudioClip checkPointSFX;
+    [SerializeField]
     private int id;
 
     public Transform PlayerSpawnPoint => playerSpawnPoint;
@@ -15,6 +17,7 @@ public class Checkpoint : MonoBehaviour
     public void ActivateCheckpoint()
     {
         LevelManager.Instance.ChangePlayerSpawnPoint(this);
+        AudioManager.Instance.PlaySFX(transform.position, checkPointSFX);
         UIManager.Instance.ShowUITooltip("Activated");
     }
 

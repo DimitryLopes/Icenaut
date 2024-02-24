@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c46e594607cd23749a5a60eb302fa225, type: 3}
   m_Name: CoinData
   m_EditorClassIdentifier: 
+  sfx: {fileID: 8300000, guid: 4b75957d7badad64e9d743da909eb294, type: 3}
   itemSprite: {fileID: 21300000, guid: 86274537c23dd3849be966b6e9e7f21c, type: 3}
   itemType: 0
   itemPrefab: {fileID: 8540923441981877087, guid: 4584eca425059364aa743fad2b2792ad, type: 3}

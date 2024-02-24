@@ -13,9 +13,12 @@ public class WeaponStats : ScriptableObject
     private int ammo;
     [SerializeField]
     private float reloadTime;
+    [SerializeField]
+    private AudioClip sfx;
 
     public float ReloadTime => reloadTime;
     public int MaxAmmo => ammo;
+    public AudioClip SFX => sfx;
     public float ShootDelay => shootDelay;
     public float Damage => damage;
     public Projectile ProjectilePrefab => projectile;

@@ -17,3 +17,4 @@ MonoBehaviour:
   shootDelay: 2
   ammo: 1
   reloadTime: 0.1
+  sfx: {fileID: 8300000, guid: d07fe384c1031c549bfa848739b50ae9, type: 3}

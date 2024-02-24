@@ -572,7 +572,7 @@ MonoBehaviour:
   staminaRegenerationRate: 0.8
   shootingDelay: 5
   groundLayerID: 7
-  groundCheckDistance: 0.3
+  groundCheckDistance: 0.45
   whatIsGround:
     serializedVersion: 2
     m_Bits: 8

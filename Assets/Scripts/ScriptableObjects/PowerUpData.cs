@@ -4,6 +4,8 @@ using UnityEngine;
 public class PowerUpData : ScriptableObject
 {
     [SerializeField]
+    private AudioClip sfx;
+    [SerializeField]
     private float speed;
     [SerializeField]
     private float jumpForce;
@@ -15,6 +17,7 @@ public class PowerUpData : ScriptableObject
     private int id;
 
     public float Speed => speed;
+    public AudioClip SFX => sfx;
     public int ID => id;
     public float JumpForce => jumpForce;
     public float Duration => duration;

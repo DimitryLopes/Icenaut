@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72ff04b0c36005341b85ec6beab8a35c, type: 3}
   m_Name: SpeedPowerUpData
   m_EditorClassIdentifier: 
+  sfx: {fileID: 8300000, guid: f00ab0ee4c0e79043b27694402db8e72, type: 3}
   speed: 5
   jumpForce: 0
   duration: 30
